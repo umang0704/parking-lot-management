@@ -1,5 +1,6 @@
 package com.lld.parkinglot.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.lld.parkinglot.enums.SpotStatus;
 import com.lld.parkinglot.enums.VehicleType;
 import lombok.Data;
@@ -15,6 +16,7 @@ public class ParkingSpot extends BaseModel{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id",nullable = false)
+    @JsonIgnore
     private Long id;
 
 

@@ -7,15 +7,19 @@ import com.lld.parkinglot.enums.*;
 import com.lld.parkinglot.exceptions.ApplicationException;
 import com.lld.parkinglot.models.*;
 import com.lld.parkinglot.repositories.TicketRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Service
 public class TicketService {
+    private final static Logger logger = LoggerFactory.getLogger(TicketService.class);
     @Autowired
     private ParkingLotService parkingLotService;
     @Autowired
@@ -77,7 +81,7 @@ public class TicketService {
         return createTicketDto(gate, operator, parkingSpot, ticket);
     }
 
-    private static TicketDto createTicketDto(Gate gate, Operator operator, ParkingSpot parkingSpot, Ticket ticket) {
+    public TicketDto createTicketDto(Gate gate, Operator operator, ParkingSpot parkingSpot, Ticket ticket) {
         TicketDto ticketDto = new TicketDto();
         ticketDto.setEntryTime(ticket.getEntryTime());
         ticketDto.setParkingFloor(parkingSpot.getParkingFloor().getFloor());
@@ -85,8 +89,18 @@ public class TicketService {
         ticketDto.setOperatorId(operator.getEmployeeId().toString());
         ticketDto.setSpotNumber(ticket.getSpotNumber());
         ticketDto.setParkingLotId(gate.getParkingLot().getId());
+        ticketDto.setVehicleNumber(ticket.getVehicle().getVehicleNumber());
         return ticketDto;
     }
 
+    public Ticket fetchTicket(Vehicle vehicle) throws ApplicationException {
+        List<Ticket> ticket = ticketRepository.getByTicketStatusAndVehicle(TicketStatus.OPEN,vehicle);
+        if(ticket.size() != 1){
+            if(ticket.size() == 0) logger.error("No Open Ticket Found for Vehicle: "+ vehicle.getVehicleNumber());
+            else if(ticket.size() > 0) logger.error("More than one Open Ticket found for Vehicle: "+vehicle.getVehicleNumber());
+            throw new ApplicationException(ResponseCode.PL_400405,"Valid Ticket Not Found For Vehicle.");
+        }
+        return ticket.get(0);
+    }
 
 }

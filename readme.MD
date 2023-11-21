@@ -39,5 +39,11 @@ Input : ParkingLotId, OperatorId, VehicleNumber, VehicleType, GateId
 
 ### Bill Generation:
 ```
-
+Input : vehicle number, operatorId, gateNumber
+1. Validations
+    - verify vehicle
+    - verify operator
+    - verify gateNumber
+2. Calculate Bill sing Bill Calculation Strategy
+3. Return Bill
 ```

@@ -12,6 +12,7 @@ public enum ResponseCode {
     PL_400402("PL_400402","Operator Not Found", HttpStatus.BAD_REQUEST),
     PL_400403("PL_400402","Gate Not Found", HttpStatus.BAD_REQUEST),
     PL_400404("PL_400404","Ticket already exist for vehicle with Open state.", HttpStatus.BAD_REQUEST),
+    PL_400405("PL_400404","Vehicle Not Found for vehicle Number", HttpStatus.BAD_REQUEST),
 
 
     //500

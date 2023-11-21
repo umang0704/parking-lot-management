@@ -1,6 +1,7 @@
 package com.lld.parkinglot.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.lld.parkinglot.enums.TicketStatus;
 import lombok.Data;
 
@@ -14,6 +15,7 @@ public class Ticket extends BaseModel{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id",nullable = false)
+    @JsonIgnore
     private Long id;
 
     @Column(name = "entry_time",nullable = false)

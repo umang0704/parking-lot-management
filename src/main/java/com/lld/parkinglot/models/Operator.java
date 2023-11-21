@@ -19,6 +19,7 @@ public class Operator extends BaseModel {
     private String name;
 
     @Column(name = "employee_id",nullable = false)
+    @JsonIgnore
     private UUID employeeId;
 
     @ManyToOne

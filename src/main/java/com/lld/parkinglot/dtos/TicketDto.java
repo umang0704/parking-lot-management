@@ -31,4 +31,7 @@ public class TicketDto implements Serializable {
 
     @JsonProperty(value = "spot_number")
     private Integer spotNumber;
+
+    @JsonProperty(value = "vehicle_number")
+    private String vehicleNumber;
 }
