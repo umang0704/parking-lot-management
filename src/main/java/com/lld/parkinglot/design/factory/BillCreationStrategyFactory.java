@@ -9,17 +9,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class BillCreationStrategyFactory {
 
-    @Autowired
-    private BillAmountCreationByTimeDurationStrategy billAmountCreationByTimeDurationStrategy;
+  @Autowired
+  private BillAmountCreationByTimeDurationStrategy billAmountCreationByTimeDurationStrategy;
 
-    public BillAmountCreationStrategy getBillCreationFactory(BillCreationStrategyTypes billCreationStrategyTypes) {
+  public BillAmountCreationStrategy getBillCreationFactory(
+      BillCreationStrategyTypes billCreationStrategyTypes) {
 
-        switch (billCreationStrategyTypes) {
-            case DURATION:
-                return billAmountCreationByTimeDurationStrategy;
-            default:
-                return null;
-        }
-
+    switch (billCreationStrategyTypes) {
+      case DURATION:
+        return billAmountCreationByTimeDurationStrategy;
+      default:
+        return null;
     }
+  }
 }

@@ -8,5 +8,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public interface SpotSelectionStrategy {
-    ParkingSpot getParkingSpot(VehicleType vehicleType, ParkingLot parkingLot) throws ApplicationException;
+  ParkingSpot getParkingSpot(VehicleType vehicleType, ParkingLot parkingLot)
+      throws ApplicationException;
 }

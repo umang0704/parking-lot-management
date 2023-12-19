@@ -10,12 +10,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class VehicleTypeSpotSelectionStrategy implements SpotSelectionStrategy {
-    @Autowired
-    private ParkingSpotService parkingSpotService;
+  @Autowired private ParkingSpotService parkingSpotService;
 
-    @Override
-    public ParkingSpot getParkingSpot(VehicleType vehicleType, ParkingLot parkingLot) throws ApplicationException {
-        return parkingSpotService.getAndBlockParkingSpotByVehicleType(parkingLot, vehicleType);
-
-    }
+  @Override
+  public ParkingSpot getParkingSpot(VehicleType vehicleType, ParkingLot parkingLot)
+      throws ApplicationException {
+    return parkingSpotService.getAndBlockParkingSpotByVehicleType(parkingLot, vehicleType);
+  }
 }

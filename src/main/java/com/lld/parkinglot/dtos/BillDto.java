@@ -2,30 +2,30 @@ package com.lld.parkinglot.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lld.parkinglot.models.Ticket;
-import lombok.Data;
-
 import java.io.Serializable;
 import java.util.Date;
+import lombok.Data;
+
 @Data
 public class BillDto implements Serializable {
-    @JsonProperty("operator_name")
-    private String operatorName;
-    @JsonProperty("vehicle_number")
-    private String vehicle_number;
+  @JsonProperty("operator_name")
+  private String operatorName;
 
-    @JsonProperty("payment_link")
-    private String paymentLink;
+  @JsonProperty("vehicle_number")
+  private String vehicle_number;
 
-    @JsonProperty("amount")
-    private String amount;
+  @JsonProperty("payment_link")
+  private String paymentLink;
 
-    @JsonProperty("gate_number")
-    private Integer gateNumber;
+  @JsonProperty("amount")
+  private String amount;
 
-    @JsonProperty("ticket")
-    private Ticket ticket;
+  @JsonProperty("gate_number")
+  private Integer gateNumber;
 
-    @JsonProperty("exit_time")
-    private Date exitTime;
+  @JsonProperty("ticket")
+  private Ticket ticket;
 
+  @JsonProperty("exit_time")
+  private Date exitTime;
 }

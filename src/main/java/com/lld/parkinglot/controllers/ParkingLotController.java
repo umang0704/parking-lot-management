@@ -19,20 +19,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "/v1/parking-lot")
 public class ParkingLotController {
 
-    @Autowired
-    private ParkingLotService parkingLotService;
+  @Autowired private ParkingLotService parkingLotService;
 
-    @PostMapping(path = "/create/metric")
-    public ResponseDto createParkingLotOnMetric(@RequestBody @Validated ParkingLotCreationDto parkingLotCreationDto) {
-        ParkingLotDetailsDto data = parkingLotService.createDto(parkingLotCreationDto);
-        ResponseDto responseDto = new ResponseDto();
-        responseDto.setData(data);
-        responseDto.setMeta(new Meta(
-                ResponseCode.PL_200101.getResponseCode(),
-                ResponseCode.PL_200101.getMessage(),
-                MDC.get(LoggingConstants.REQUEST_ID),
-                MDC.get(LoggingConstants.RESPONSE_ID)
-        ));
-        return responseDto;
-    }
+  @PostMapping(path = "/create/metric")
+  public ResponseDto createParkingLotOnMetric(
+      @RequestBody @Validated ParkingLotCreationDto parkingLotCreationDto) {
+    ParkingLotDetailsDto data = parkingLotService.createDto(parkingLotCreationDto);
+    ResponseDto responseDto = new ResponseDto();
+    responseDto.setData(data);
+    responseDto.setMeta(
+        new Meta(
+            ResponseCode.PL_200101.getResponseCode(),
+            ResponseCode.PL_200101.getMessage(),
+            MDC.get(LoggingConstants.REQUEST_ID),
+            MDC.get(LoggingConstants.RESPONSE_ID)));
+    return responseDto;
+  }
 }

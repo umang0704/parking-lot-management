@@ -8,14 +8,15 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class SpotSelectionStrategyFactory {
-    @Autowired
-    private VehicleTypeSpotSelectionStrategy vehicleTypeSpotSelectionStrategy;
+  @Autowired private VehicleTypeSpotSelectionStrategy vehicleTypeSpotSelectionStrategy;
 
-    public SpotSelectionStrategy getSpotSelectionStrategyByType(SpotSelectionStrategyTypes spotSelectionStrategyTypes){
-        switch (spotSelectionStrategyTypes){
-            case SINGLE: return vehicleTypeSpotSelectionStrategy;
-            default: return null;
-        }
+  public SpotSelectionStrategy getSpotSelectionStrategyByType(
+      SpotSelectionStrategyTypes spotSelectionStrategyTypes) {
+    switch (spotSelectionStrategyTypes) {
+      case SINGLE:
+        return vehicleTypeSpotSelectionStrategy;
+      default:
+        return null;
     }
-
+  }
 }

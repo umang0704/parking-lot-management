@@ -1,29 +1,29 @@
 package com.lld.parkinglot.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
-
-import javax.persistence.*;
 import java.util.UUID;
+import javax.persistence.*;
+import lombok.Data;
 
 @Entity
 @Table(name = "operator")
 @Data
 public class Operator extends BaseModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id",nullable = false)
-    @JsonIgnore
-    private Long id;
-    @Column(name = "name",nullable = false)
-    private String name;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id", nullable = false)
+  @JsonIgnore
+  private Long id;
 
-    @Column(name = "employee_id",nullable = false)
-    @JsonIgnore
-    private UUID employeeId;
+  @Column(name = "name", nullable = false)
+  private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "operator_parking_lot_id",nullable = false)
-    @JsonIgnore
-    private ParkingLot parkingLot;
+  @Column(name = "employee_id", nullable = false)
+  @JsonIgnore
+  private UUID employeeId;
+
+  @ManyToOne
+  @JoinColumn(name = "operator_parking_lot_id", nullable = false)
+  @JsonIgnore
+  private ParkingLot parkingLot;
 }
